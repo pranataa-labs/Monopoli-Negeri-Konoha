@@ -1,6 +1,6 @@
 import React from "react";
 import { TileData, TileState, PlayerClient, EventCardData } from "../../types/game";
-import { Crown, Sparkles, Key, FileText } from "lucide-react";
+import { Crown, Sparkles, FileText } from "lucide-react";
 import { formatShortRupiah } from "./formatters";
 
 interface CenterBoardDeckProps {
@@ -53,7 +53,7 @@ export const CenterBoardDeck: React.FC<CenterBoardDeckProps> = ({
       {/* 2. RECESSED CARD SLOTS IN THE LEATHER (Top-Left & Bottom-Right) */}
       {/* ========================================================= */}
       <div className="relative z-10 w-full h-full flex flex-col justify-between">
-        {/* UPPER-LEFT: KARTU PEMERINTAH (KESEMPATAN) */}
+        {/* UPPER-LEFT: KARTU TANDA TANYA (?) */}
         <div className="flex justify-start">
           <div className="w-36 sm:w-40 h-22 sm:h-26 rounded-xl bg-[#09090d]/90 border border-amber-400/60 shadow-[inset_0_4px_12px_rgba(0,0,0,0.95),0_4px_15px_rgba(0,0,0,0.5)] p-2.5 flex flex-col justify-between relative group hover:border-amber-300 transition-all cursor-pointer">
             {/* Stacked Cards Underlay Visual Effect */}
@@ -61,18 +61,18 @@ export const CenterBoardDeck: React.FC<CenterBoardDeckProps> = ({
 
             <div className="flex items-center justify-between border-b border-amber-400/20 pb-1">
               <span className="text-[7.5px] font-bold uppercase text-amber-300 font-display tracking-wider flex items-center gap-1">
-                <FileText size={11} className="text-amber-400" /> PEMERINTAH
+                <FileText size={11} className="text-amber-400" /> TANDA TANYA
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400/70" />
+              <span className="text-[9px] font-black text-amber-300 font-mono">?</span>
             </div>
 
             <div className="flex flex-col items-center justify-center my-auto text-center py-1">
               {/* Recessed Card Insert Slot Line */}
               <div className="w-20 sm:w-24 h-1.5 bg-black rounded-full shadow-inner border border-amber-500/25 mb-1.5" />
-              <div className="flex items-center gap-1 text-amber-300">
-                <Sparkles size={12} />
+              <div className="flex items-center gap-1.5 text-amber-300">
+                <span className="text-sm font-black text-amber-300">?</span>
                 <span className="text-[8px] sm:text-[8.5px] font-bold uppercase tracking-wider">
-                  KEBIJAKAN UMUM
+                  CHANCE
                 </span>
               </div>
             </div>
@@ -83,7 +83,7 @@ export const CenterBoardDeck: React.FC<CenterBoardDeckProps> = ({
           </div>
         </div>
 
-        {/* LOWER-RIGHT: KARTU ORANG DALAM (DANA TAKTIS) */}
+        {/* LOWER-RIGHT: KARTU LUCKY SPIN */}
         <div className="flex justify-end">
           <div className="w-36 sm:w-40 h-22 sm:h-26 rounded-xl bg-[#09090d]/90 border border-amber-400/60 shadow-[inset_0_4px_12px_rgba(0,0,0,0.95),0_4px_15px_rgba(0,0,0,0.5)] p-2.5 flex flex-col justify-between relative group hover:border-amber-300 transition-all cursor-pointer">
             {/* Stacked Cards Underlay Visual Effect */}
@@ -91,7 +91,7 @@ export const CenterBoardDeck: React.FC<CenterBoardDeckProps> = ({
 
             <div className="flex items-center justify-between border-b border-amber-400/20 pb-1">
               <span className="text-[7.5px] font-bold uppercase text-amber-300 font-display tracking-wider flex items-center gap-1">
-                <Key size={11} className="text-amber-400" /> ORANG DALAM
+                <Sparkles size={11} className="text-amber-400" /> LUCKY SPIN
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400/70" />
             </div>
@@ -121,7 +121,7 @@ export const CenterBoardDeck: React.FC<CenterBoardDeckProps> = ({
         <div className="absolute inset-0 bg-black/85 backdrop-blur-sm z-30 flex items-center justify-center p-4 animate-scale-up">
           <div className="w-full max-w-sm bg-[#0a0a0e] border-2 border-amber-400 rounded-2xl shadow-2xl p-4 text-center space-y-3 ring-2 ring-amber-500/40">
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[9px] font-mono uppercase font-black">
-              {activeCard.deck === "GOVERNMENT" ? "KARTU PEMERINTAH" : "KARTU ORANG DALAM"}
+              {activeCard.deck === "GOVERNMENT" ? "KARTU TANDA TANYA (?)" : "KARTU LUCKY SPIN"}
             </div>
             <h3 className="text-base font-black text-white uppercase font-display leading-tight">
               {activeCard.title}

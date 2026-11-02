@@ -10,8 +10,8 @@ export const GOVERNMENT_CARDS = [
   {
     id: "GOV_01",
     deck: "GOVERNMENT",
-    title: "Restitusi Pajak Salah Hitung",
-    text: "Lapor SPT Tahunan tepat waktu, ternyata ada kelebihan bayar dari kantor lama. Dapat restitusi pajak Rp 50.000.",
+    title: "Ditabrak Emak-Emak Sen Kanan Belok Kiri",
+    text: "Dapat santunan Rp 50.000 karena ditabrak ibu-ibu sen kanan tapi belok kiri. Uang kompensasi langsung cair!",
     actionType: "FLAT_GAIN",
     targetSector: "NONE",
     amount: 50000,
@@ -188,7 +188,7 @@ export const INSIDER_CARDS = [
     text: "Ikut rapat koordinasi pembahasan 'kemiskinan ekstrem' selama 3 hari 2 malam di resort bintang lima Bali. Pulang bawa uang saku perjalanan dinas!",
     actionType: "TELEPORT_AND_REWARD",
     targetSector: SECTORS.WISATA_ELIT,
-    destinationIndex: 46, // Canggu Bali
+    destinationIndex: 26, // Bali
     amount: 350000,
     fallbackAmount: 350000,
   },
@@ -310,7 +310,7 @@ export const INSIDER_CARDS = [
     text: "Bikin regulasi kilat dalam semalam demi meloloskan izin konsesi tambang dan sawit milik besan. Dapat 'tanda terima kasih' dan pindah ke pusat kekuasaan!",
     actionType: "TELEPORT_AND_REWARD",
     targetSector: SECTORS.PUSAT_OLIGARKI,
-    destinationIndex: 54, // IKN Nusantara
+    destinationIndex: 37, // DKI Jakarta
     amount: 500000,
     fallbackAmount: 500000,
   },

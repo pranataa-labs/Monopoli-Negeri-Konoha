@@ -13,69 +13,42 @@ interface TileCellProps {
   onHover?: (tile: TileData | null) => void;
 }
 
-// Ornate Gold Baroque Crown Crest for Chance (Kebijakan Pemerintah)
-const GoldCrownCrest: React.FC<{ size?: number }> = ({ size = 20 }) => (
+// Ornate Gold Question Mark for Chance (Tanda Tanya)
+const GoldQuestionMark: React.FC<{ size?: number }> = ({ size = 20 }) => (
   <svg
     width={size}
     height={size}
-    viewBox="0 0 48 48"
+    viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="drop-shadow-[0_1px_3px_rgba(234,179,8,0.3)]"
+    stroke="#fef08a"
+    strokeWidth="2.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="drop-shadow-[0_1px_4px_rgba(234,179,8,0.5)]"
   >
-    <path
-      d="M24 6L28 15H37L30 21L33 30L24 24L15 30L18 21L11 15H20L24 6Z"
-      fill="url(#goldGrad)"
-      stroke="#ca8a04"
-      strokeWidth="1.2"
-    />
-    <path
-      d="M13 33C17 37 31 37 35 33C36 37 33 42 24 42C15 42 12 37 13 33Z"
-      fill="url(#goldGradDark)"
-      stroke="#eab308"
-      strokeWidth="1.2"
-    />
-    <circle cx="24" cy="20" r="2.5" fill="#fef08a" />
-    <defs>
-      <linearGradient id="goldGrad" x1="11" y1="6" x2="37" y2="30" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#fef08a" />
-        <stop offset="0.5" stopColor="#eab308" />
-        <stop offset="1" stopColor="#a16207" />
-      </linearGradient>
-      <linearGradient id="goldGradDark" x1="13" y1="33" x2="35" y2="42" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#eab308" />
-        <stop offset="1" stopColor="#78350f" />
-      </linearGradient>
-    </defs>
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <circle cx="12" cy="17" r="1.2" fill="#fef08a" />
   </svg>
 );
 
-// Ornate Gold Baroque Medallion / Rosette for Community Chest (Lobi Orang Dalam)
-const GoldMedallionRosette: React.FC<{ size?: number }> = ({ size = 20 }) => (
+// Ornate Gold Lucky Wheel for Lucky Spin
+const GoldLuckyWheel: React.FC<{ size?: number }> = ({ size = 20 }) => (
   <svg
     width={size}
     height={size}
-    viewBox="0 0 48 48"
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="drop-shadow-[0_1px_3px_rgba(234,179,8,0.3)]"
+    className="drop-shadow-[0_1px_4px_rgba(234,179,8,0.5)]"
   >
-    <circle cx="24" cy="24" r="18" stroke="url(#goldGradM)" strokeWidth="1.2" strokeDasharray="2 2" />
-    <circle cx="24" cy="24" r="14" fill="#181303" stroke="url(#goldGradM)" strokeWidth="1.5" />
-    <path
-      d="M24 14V34M14 24H34M17 17L31 31M17 31L31 17"
-      stroke="#fef08a"
-      strokeWidth="1"
-      strokeLinecap="round"
-    />
-    <circle cx="24" cy="24" r="5" fill="url(#goldGradM)" />
-    <defs>
-      <linearGradient id="goldGradM" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#fef08a" />
-        <stop offset="0.5" stopColor="#eab308" />
-        <stop offset="1" stopColor="#ca8a04" />
-      </linearGradient>
-    </defs>
+    <circle cx="12" cy="12" r="9" stroke="#fef08a" strokeWidth="1.6" />
+    <circle cx="12" cy="12" r="7" stroke="#ca8a04" strokeWidth="0.8" strokeDasharray="1.5 1.5" />
+    <line x1="12" y1="3" x2="12" y2="21" stroke="#fef08a" strokeWidth="1.2" />
+    <line x1="3" y1="12" x2="21" y2="12" stroke="#fef08a" strokeWidth="1.2" />
+    <line x1="5.64" y1="5.64" x2="18.36" y2="18.36" stroke="#fef08a" strokeWidth="1.2" />
+    <line x1="18.36" y1="5.64" x2="5.64" y2="18.36" stroke="#fef08a" strokeWidth="1.2" />
+    <circle cx="12" cy="12" r="2.6" fill="#eab308" stroke="#ca8a04" strokeWidth="0.8" />
+    <polygon points="12,1.8 10.5,3.6 13.5,3.6" fill="#fef08a" />
   </svg>
 );
 
@@ -248,13 +221,12 @@ export const TileCell: React.FC<TileCellProps> = ({
           </div>
         )}
 
-        {/* CORNER 10: RUTAN KPK (JAIL) */}
+        {/* CORNER 10: PENJARA (JAIL) */}
         {tile.index === 10 && (
           <div className="w-full h-full flex flex-col justify-between items-center p-1 relative">
-            <div className="flex items-center justify-between w-full text-[6.5px] sm:text-[7px] font-mono text-amber-400/90 font-bold uppercase leading-none px-0.5">
-              <span>HANYA</span>
-              <span>BESUK</span>
-            </div>
+            <span className="text-[6.5px] sm:text-[7px] font-mono text-amber-400/80 font-bold uppercase tracking-wider leading-none">
+              TERPIDANA
+            </span>
             {/* Inner Prison Graphic */}
             <div className="my-auto w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-orange-950/70 border border-orange-500/60 p-1 flex flex-col items-center justify-center shadow-inner">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb923c" strokeWidth="1.8" strokeLinecap="round">
@@ -263,20 +235,20 @@ export const TileCell: React.FC<TileCellProps> = ({
                 <line x1="15" y1="3" x2="15" y2="21" />
               </svg>
               <span className="text-[5.5px] font-bold text-orange-300 uppercase leading-none mt-0.5">
-                RUTAN KPK
+                SEL TAHANAN
               </span>
             </div>
-            <span className="text-[6px] font-mono text-slate-500 uppercase leading-none">
+            <span className="text-[6.5px] sm:text-[7px] font-mono text-amber-300 font-bold uppercase tracking-wider leading-none">
               PENJARA
             </span>
           </div>
         )}
 
-        {/* CORNER 20: BANSOS & BRANKAS APBN (FREE PARKING) */}
+        {/* CORNER 20: PARKIR BEBAS (FREE PARKING) */}
         {tile.index === 20 && (
           <div className="w-full h-full flex flex-col justify-between items-center p-1 text-center relative">
             <span className="text-[6.5px] sm:text-[7.5px] font-bold uppercase text-amber-400 tracking-wider leading-none">
-              PARKIR BEBAS
+              PARKIR
             </span>
             <div className="my-auto transform -rotate-45 flex flex-col items-center justify-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_2px_4px_rgba(234,179,8,0.4)]">
@@ -286,16 +258,16 @@ export const TileCell: React.FC<TileCellProps> = ({
               </svg>
             </div>
             <span className="text-[6.5px] font-mono text-amber-300 font-bold leading-none uppercase">
-              KAS APBN
+              BEBAS
             </span>
           </div>
         )}
 
-        {/* CORNER 30: OTT KPK (GO TO JAIL) */}
+        {/* CORNER 30: MASUK PENJARA (GO TO JAIL) */}
         {tile.index === 30 && (
           <div className="w-full h-full flex flex-col justify-between items-center p-1 text-center relative">
             <span className="text-[7px] sm:text-[7.5px] font-bold uppercase text-red-400 tracking-wider leading-none">
-              OTT KPK
+              MASUK
             </span>
             <div className="my-auto transform rotate-45 flex flex-col items-center justify-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="drop-shadow-[0_2px_4px_rgba(239,68,68,0.4)]">
@@ -305,7 +277,7 @@ export const TileCell: React.FC<TileCellProps> = ({
               </svg>
             </div>
             <span className="text-[6.5px] font-mono text-red-300 font-bold leading-none uppercase">
-              MASUK RUTAN
+              PENJARA
             </span>
           </div>
         )}
@@ -396,18 +368,18 @@ export const TileCell: React.FC<TileCellProps> = ({
         {/* Central Graphic / Icon for Special Tiles */}
         {isCardGov && (
           <div className="my-auto flex flex-col items-center justify-center">
-            <GoldCrownCrest size={20} />
-            <span className="text-[6.5px] sm:text-[7px] font-bold font-display text-amber-300 tracking-tight text-center uppercase mt-0.5">
-              PEMERINTAH
+            <GoldQuestionMark size={22} />
+            <span className="text-[7.5px] sm:text-[8px] font-black font-display text-amber-300 tracking-wider text-center uppercase mt-0.5">
+              ?
             </span>
           </div>
         )}
 
         {isCardInsider && (
           <div className="my-auto flex flex-col items-center justify-center">
-            <GoldMedallionRosette size={20} />
-            <span className="text-[6.5px] sm:text-[7px] font-bold font-display text-amber-300 tracking-tight text-center uppercase mt-0.5">
-              ORANG DALAM
+            <GoldLuckyWheel size={22} />
+            <span className="text-[6px] sm:text-[6.5px] font-bold font-display text-amber-300 tracking-tight text-center uppercase mt-0.5">
+              LUCKY SPIN
             </span>
           </div>
         )}
@@ -415,8 +387,8 @@ export const TileCell: React.FC<TileCellProps> = ({
         {isRailroad && (
           <div className="my-auto flex flex-col items-center justify-center">
             <GoldLocomotive size={22} />
-            <span className="text-[6.5px] sm:text-[7px] font-mono font-semibold text-amber-300/90 text-center uppercase line-clamp-1 mt-0.5">
-              {tile.name.replace("Kereta Cepat ", "").replace("Pelabuhan ", "").replace("Bandara ", "")}
+            <span className="text-[6px] sm:text-[6.5px] font-mono font-semibold text-amber-300/90 text-center uppercase line-clamp-2 mt-0.5 leading-tight px-0.5">
+              {tile.name}
             </span>
           </div>
         )}
@@ -424,8 +396,8 @@ export const TileCell: React.FC<TileCellProps> = ({
         {isUtility && (
           <div className="my-auto flex flex-col items-center justify-center">
             <GoldUtilityIcon type={tile.name.includes("PLN") ? "electric" : "water"} size={20} />
-            <span className="text-[6.5px] sm:text-[7px] font-mono font-semibold text-amber-300 text-center uppercase line-clamp-1 mt-0.5">
-              {tile.name.includes("PLN") ? "PLN LISTRIK" : "PDAM AIR"}
+            <span className="text-[6px] sm:text-[6.5px] font-mono font-semibold text-amber-300 text-center uppercase line-clamp-2 mt-0.5 leading-tight px-0.5">
+              {tile.name}
             </span>
           </div>
         )}
@@ -433,8 +405,8 @@ export const TileCell: React.FC<TileCellProps> = ({
         {isTax && (
           <div className="my-auto flex flex-col items-center justify-center">
             <GoldDiamondTax size={20} />
-            <span className="text-[6.5px] font-bold text-red-400 text-center uppercase line-clamp-1 mt-0.5">
-              {tile.name.includes("DJP") ? "PAJAK DJP" : "BEA CUKAI"}
+            <span className="text-[6px] sm:text-[6.5px] font-bold text-red-400 text-center uppercase line-clamp-2 mt-0.5 leading-tight px-0.5">
+              {tile.name}
             </span>
           </div>
         )}

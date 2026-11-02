@@ -29,7 +29,7 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
   const activePlayer = snapshot?.players.find((p) => p.id === snapshot.activePlayerId);
 
   return (
-    <div className="relative w-[840px] h-[840px] min-w-[840px] min-h-[840px] aspect-square p-3 sm:p-4 rounded-3xl leather-case border-[6px] sm:border-[8px] border-[#16161b] shadow-2xl select-none flex items-center justify-center shrink-0">
+    <div className="relative h-[calc(100vh-4.6rem)] max-h-[920px] aspect-square p-3 sm:p-4 rounded-3xl leather-case border-[6px] sm:border-[8px] border-[#16161b] shadow-2xl select-none flex items-center justify-center shrink-0">
       {/* Top Gold Briefcase Clasp / Latch */}
       <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-5 sm:h-6 gold-latch rounded-b-md z-30 flex items-center justify-center border border-amber-300/40 shadow-md">
         <div className="w-5 h-1.5 bg-[#451a03] rounded-xs shadow-inner" />
