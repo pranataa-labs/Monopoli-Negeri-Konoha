@@ -25,11 +25,11 @@ test("GameState - Passing START with Tapera Cut", () => {
   game.addPlayer({ id: "p2", name: "Pemain 2", token: TOKENS[1] });
   game.startGame();
 
-  p1.position = 54; // 2 langkah lagi lewat START (Tile 0)
+  p1.position = 38; // 2 langkah lagi lewat START (Tile 0 dalam 40 petak)
   const initialPool = game.kasNegaraPool;
   const initialCash = p1.cash;
 
-  // Lempar dadu 3 (54 + 3 = 57 % 56 = index 1) -> lewat START
+  // Lempar dadu 3 (38 + 3 = 41 % 40 = index 1) -> lewat START
   game.rollDice([1, 2]);
 
   assert.equal(p1.position, 1);
@@ -44,13 +44,13 @@ test("GameState - Free Parking Drains Kas Negara Pool", () => {
   game.startGame();
 
   game.kasNegaraPool = 2500000;
-  p1.position = 25;
+  p1.position = 17;
   const initialCash = p1.cash;
 
-  // Lempar dadu 3 (25 + 3 = 28 -> CAIR PROYEK APBN / BANSOS)
+  // Lempar dadu 3 (17 + 3 = 20 -> CAIR PROYEK APBN / BANSOS)
   game.rollDice([1, 2]);
 
-  assert.equal(p1.position, 28);
+  assert.equal(p1.position, 20);
   assert.equal(p1.cash, initialCash + 2500000, "Pemain menguras seluruh Kas Negara Pool");
   assert.equal(game.kasNegaraPool, 0, "Kas Negara Pool menjadi Rp 0");
 });
@@ -76,9 +76,9 @@ test("CardResolver - Dynamic Sector Penalty vs Fallback", () => {
   assert.equal(res1.cashDelta, -100000, "Harus bayar fallback Rp 100.000");
   assert.equal(game.kasNegaraPool, poolBefore + 100000);
 
-  // Kasus 2: Memiliki 2 properti sawit (tile_29 & tile_31)
-  p1.addProperty("tile_29");
-  p1.addProperty("tile_31");
+  // Kasus 2: Memiliki 2 properti sawit (tile_16 & tile_18)
+  p1.addProperty("tile_16");
+  p1.addProperty("tile_18");
   const res2 = CardResolver.resolve({ player: p1, card: odolCard, gameState: game });
   assert.equal(res2.cashDelta, -500000, "Denda 2 aset sawit x Rp 250.000 = Rp 500.000");
 });
@@ -92,7 +92,7 @@ test("GameState - Rent in Jail has 20% Luxury Cell Cut", () => {
   // p1 punya properti tile_01 (Pasar Tanah Abang, sewa dasar Rp 50.000)
   p1.addProperty("tile_01");
   game.tilesState["tile_01"].ownerId = p1.id;
-  p1.sendToJail(14); // Masuk Rutan KPK
+  p1.sendToJail(10); // Masuk Rutan KPK (petak 10)
 
   const p1InitialCash = p1.cash;
   const p2InitialCash = p2.cash;

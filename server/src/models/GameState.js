@@ -151,11 +151,11 @@ export class GameState {
     if (isDouble) {
       this.doubleStreak++;
       if (this.doubleStreak >= 3) {
-        player.sendToJail(14);
+        player.sendToJail(10);
         this.doubleStreak = 0;
         this.hasRolled = true;
         this.addLog(`${player.name} melempar dadu kembar 3 kali berturut-turut! Dianggap mencurigakan (OTT KPK) dan masuk sel!`, "ERROR");
-        this.lastRollResult = { d1, d2, sum, isDouble, previousPosition: player.position, newPosition: 14, passedStart: false };
+        this.lastRollResult = { d1, d2, sum, isDouble, previousPosition: player.position, newPosition: 10, passedStart: false };
         return this.lastRollResult;
       }
     } else {
@@ -164,8 +164,9 @@ export class GameState {
 
     const prevPos = player.position;
     const rawPos = prevPos + sum;
-    const newPos = rawPos % 56;
-    const passedStart = rawPos >= 56;
+    const boardSize = this.tilesCatalog.length;
+    const newPos = rawPos % boardSize;
+    const passedStart = rawPos >= boardSize;
 
     player.moveTo(newPos);
 
@@ -198,7 +199,7 @@ export class GameState {
 
     switch (tile.sector) {
       case SECTORS.SPECIAL_GOTOJAIL: {
-        player.sendToJail(14);
+        player.sendToJail(10);
         this.addLog(`${player.name} TERJARING OTT KPK di petak #${tileIndex}! Langsung diseret ke Rutan KPK.`, "ERROR");
         break;
       }

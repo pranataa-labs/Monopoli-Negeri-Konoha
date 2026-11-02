@@ -65,6 +65,44 @@
   -webkit-text-fill-color: transparent;
 }
 
+/* Luxury Leather Case & Gold Metal Elements */
+.leather-case {
+  background: radial-gradient(circle at 50% 50%, #15151a 0%, #0a0a0d 70%, #050507 100%);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(212, 175, 55, 0.25),
+    inset 0 2px 4px rgba(255, 255, 255, 0.08),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.gold-latch {
+  background: linear-gradient(180deg, #fef08a 0%, #eab308 30%, #ca8a04 70%, #854d0e 100%);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.leather-embossed {
+  background-color: #070709;
+  background-image: 
+    radial-gradient(#d4af3708 1px, transparent 1px),
+    radial-gradient(#d4af3705 1px, #070709 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.beveled-tray {
+  box-shadow: 
+    inset 0 10px 25px -5px rgba(0, 0, 0, 0.95),
+    inset 0 0 0 2px rgba(212, 175, 55, 0.35),
+    0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.plaque-gold-shadow {
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 15px rgba(234, 179, 8, 0.2));
+}
+
 /* Animations */
 @keyframes ticker {
   0% { transform: translateX(0); }

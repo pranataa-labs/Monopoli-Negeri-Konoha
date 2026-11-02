@@ -4,30 +4,30 @@ import { TILES, SECTORS } from "../src/constants/tiles.js";
 import { GOVERNMENT_CARDS, INSIDER_CARDS } from "../src/constants/cards.js";
 import { TOKENS } from "../src/constants/tokens.js";
 
-test("Board 15x15 Constants Validation", () => {
-  assert.equal(TILES.length, 56, "Papan harus memiliki tepat 56 petak keliling");
+test("Board 11x11 Constants Validation", () => {
+  assert.equal(TILES.length, 40, "Papan harus memiliki tepat 40 petak keliling");
 
   // Validate index continuity
   TILES.forEach((tile, idx) => {
     assert.equal(tile.index, idx, `Petak pada index ${idx} harus cocok`);
     assert.ok(tile.name, `Petak ${idx} harus punya nama`);
     assert.ok(tile.sector, `Petak ${idx} harus punya sektor`);
-    assert.ok(tile.gridRow >= 0 && tile.gridRow <= 14, `Baris petak ${idx} harus 0-14`);
-    assert.ok(tile.gridCol >= 0 && tile.gridCol <= 14, `Kolom petak ${idx} harus 0-14`);
+    assert.ok(tile.gridRow >= 0 && tile.gridRow <= 10, `Baris petak ${idx} harus 0-10`);
+    assert.ok(tile.gridCol >= 0 && tile.gridCol <= 10, `Kolom petak ${idx} harus 0-10`);
   });
 
   // Check 4 Corner Coordinates
   assert.equal(TILES[0].tag, "SPECIAL_START");
-  assert.deepEqual([TILES[0].gridRow, TILES[0].gridCol], [14, 14]);
+  assert.deepEqual([TILES[0].gridRow, TILES[0].gridCol], [10, 10]);
 
-  assert.equal(TILES[14].tag, "SPECIAL_JAIL");
-  assert.deepEqual([TILES[14].gridRow, TILES[14].gridCol], [14, 0]);
+  assert.equal(TILES[10].tag, "SPECIAL_JAIL");
+  assert.deepEqual([TILES[10].gridRow, TILES[10].gridCol], [10, 0]);
 
-  assert.equal(TILES[28].tag, "SPECIAL_FREEPARKING");
-  assert.deepEqual([TILES[28].gridRow, TILES[28].gridCol], [0, 0]);
+  assert.equal(TILES[20].tag, "SPECIAL_FREEPARKING");
+  assert.deepEqual([TILES[20].gridRow, TILES[20].gridCol], [0, 0]);
 
-  assert.equal(TILES[42].tag, "SPECIAL_GOTOJAIL");
-  assert.deepEqual([TILES[42].gridRow, TILES[42].gridCol], [0, 14]);
+  assert.equal(TILES[30].tag, "SPECIAL_GOTOJAIL");
+  assert.deepEqual([TILES[30].gridRow, TILES[30].gridCol], [0, 10]);
 });
 
 test("Satirical Event Cards Validation", () => {
