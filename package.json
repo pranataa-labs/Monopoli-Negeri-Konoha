@@ -1,0 +1,27 @@
+{
+  "name": "monopoli-negeri-konoha",
+  "version": "1.0.0",
+  "description": "Board Game Monopoli Satir Ekonomi-Politik Indonesia 15x15 Multi-Perangkat Wi-Fi Lokal",
+  "main": "server/src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "server": "node server/src/index.js",
+    "client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "test": "npm --prefix server test"
+  },
+  "keywords": [
+    "monopoli",
+    "board-game",
+    "indonesia",
+    "multiplayer",
+    "websocket",
+    "socket-io",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "author": "pranataa-labs",
+  "license": "MIT"
+}

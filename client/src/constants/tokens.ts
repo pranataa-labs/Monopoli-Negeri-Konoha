@@ -1,0 +1,58 @@
+import { SatiricalToken } from "../types/game";
+
+export const SATIRICAL_TOKENS: SatiricalToken[] = [
+  {
+    id: "token_rubicon",
+    name: "Rubicon Hitam",
+    icon: "Car",
+    slogan: "Pelat Nomor Cantik Hasil Pengampunan",
+    color: "#0f172a",
+    emojiTag: "CAR_RUBICON",
+    badge: "Oligarki",
+  },
+  {
+    id: "token_wheelchair",
+    name: "Kursi Roda Sakit Mendadak",
+    icon: "Accessibility",
+    slogan: "Langsung Amnesia Saat Masuk Ruang Sidang",
+    color: "#0284c7",
+    emojiTag: "WHEELCHAIR",
+    badge: "Koruptor",
+  },
+  {
+    id: "token_odol",
+    name: "Truk Sawit ODOL",
+    icon: "Truck",
+    slogan: "Muatan Menggunung Bikin Aspal Remuk",
+    color: "#d97706",
+    emojiTag: "TRUCK_ODOL",
+    badge: "CPO King",
+  },
+  {
+    id: "token_matic",
+    name: "Motor Matic Emak-Emak",
+    icon: "Bike",
+    slogan: "Sein Kanan Tapi Banting Kiri Mendadak",
+    color: "#ec4899",
+    emojiTag: "MOTOR_EMAK",
+    badge: "Warga Sipil",
+  },
+  {
+    id: "token_briefcase",
+    name: "Koper Hitam Dana Taktis",
+    icon: "Briefcase",
+    slogan: "Isi Pecahan Seratus Ribu Segel Merah",
+    color: "#6b7280",
+    emojiTag: "BRIEFCASE",
+    badge: "Orang Dalam",
+  },
+  {
+    id: "token_vest",
+    name: "Rompi Oranye KPK",
+    icon: "ShieldAlert",
+    slogan: "Tetap Senyum dan Lambaikan Tangan ke Kamera",
+    color: "#f97316",
+    emojiTag: "ORANGE_VEST",
+    badge: "Tahanan Elit",
+  },
+];
