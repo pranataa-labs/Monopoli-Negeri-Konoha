@@ -1,8 +1,15 @@
 import os from "os";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import QRCode from "qrcode";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const hasClientDist = fs.existsSync(path.resolve(__dirname, "../../client/dist/index.html"));
+
 export const PORT = process.env.PORT || 3001;
-export const CLIENT_PORT = process.env.CLIENT_PORT || 5173;
+export const CLIENT_PORT = process.env.CLIENT_PORT || (hasClientDist ? PORT : 5173);
 
 /**
  * Mendapatkan IP Address lokal Wi-Fi/LAN mesin Host
@@ -43,9 +50,8 @@ export function getLocalIp() {
  */
 export async function getNetworkConfig(roomId = "KONOHA-01") {
   const localIp = getLocalIp();
-  // Dalam development, client berjalan di CLIENT_PORT (misal 5173)
-  // Dalam production, client diserve langsung oleh express di PORT
-  const portToUse = process.env.NODE_ENV === "production" ? PORT : CLIENT_PORT;
+  // Jika client dist tersedia diserve di PORT, jika dev di port 5173
+  const portToUse = CLIENT_PORT;
   const joinUrl = `http://${localIp}:${portToUse}/play?room=${roomId}`;
 
   let qrCodeDataUrl = "";

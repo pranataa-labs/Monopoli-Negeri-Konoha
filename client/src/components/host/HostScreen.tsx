@@ -21,7 +21,9 @@ export const HostScreen: React.FC = () => {
   useEffect(() => {
     // Fetch local network info from Express backend
     const serverUrl =
-      window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+      window.location.port === "3001"
+        ? window.location.origin
+        : window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
         ? "http://localhost:3001"
         : `http://${window.location.hostname}:3001`;
 
