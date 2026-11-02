@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import { TILES } from "../../constants/board";
 import { GameSnapshot, NetworkConfig, PlayerClient, TileData } from "../../types/game";
 import { TileCell } from "./TileCell";
-import { CenterHub } from "./CenterHub";
+import { CenterBoardDeck } from "./CenterBoardDeck";
 
 interface BoardGridProps {
   snapshot: GameSnapshot | null;
-  networkConfig: NetworkConfig | null;
-  onStartGame: () => void;
+  networkConfig?: NetworkConfig | null;
+  onStartGame?: () => void;
 }
 
 export const BoardGrid: React.FC<BoardGridProps> = ({
   snapshot,
-  networkConfig,
-  onStartGame,
 }) => {
   const [hoveredTile, setHoveredTile] = useState<TileData | null>(null);
 
@@ -31,7 +29,7 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
   const activePlayer = snapshot?.players.find((p) => p.id === snapshot.activePlayerId);
 
   return (
-    <div className="relative h-[calc(100vh-4.2rem)] max-h-[920px] aspect-square p-2.5 sm:p-3.5 rounded-3xl leather-case border-[6px] sm:border-[8px] border-[#16161b] shadow-2xl select-none flex items-center justify-center">
+    <div className="relative w-[840px] h-[840px] min-w-[840px] min-h-[840px] aspect-square p-3 sm:p-4 rounded-3xl leather-case border-[6px] sm:border-[8px] border-[#16161b] shadow-2xl select-none flex items-center justify-center shrink-0">
       {/* Top Gold Briefcase Clasp / Latch */}
       <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-5 sm:h-6 gold-latch rounded-b-md z-30 flex items-center justify-center border border-amber-300/40 shadow-md">
         <div className="w-5 h-1.5 bg-[#451a03] rounded-xs shadow-inner" />
@@ -72,7 +70,7 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
           );
         })}
 
-        {/* Center Hub: Area Dalam 9x9 (Rows 2-11, Cols 2-11) */}
+        {/* Center Board Deck: Area Dalam 9x9 (Rows 2-11, Cols 2-11) */}
         <div
           className="relative z-10 overflow-hidden rounded-xl beveled-tray border-2 border-[#1c1c22]"
           style={{
@@ -82,11 +80,11 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
             gridColumnEnd: 11,
           }}
         >
-          <CenterHub
-            snapshot={snapshot}
-            networkConfig={networkConfig}
-            onStartGame={onStartGame}
+          <CenterBoardDeck
+            activeCard={snapshot?.activeCardEvent?.card}
             hoveredTile={hoveredTile}
+            tilesState={snapshot?.tilesState}
+            players={snapshot?.players}
           />
         </div>
       </div>
