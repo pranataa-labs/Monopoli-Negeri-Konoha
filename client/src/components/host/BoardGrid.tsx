@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { TILES } from "../../constants/board";
-import { GameSnapshot, NetworkConfig, PlayerClient } from "../../types/game";
+import { GameSnapshot, NetworkConfig, PlayerClient, TileData } from "../../types/game";
 import { TileCell } from "./TileCell";
 import { CenterHub } from "./CenterHub";
 
@@ -15,7 +15,9 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
   networkConfig,
   onStartGame,
 }) => {
-  // Map player positions to tile indices
+  const [hoveredTile, setHoveredTile] = useState<TileData | null>(null);
+
+  // Map posisi pemain ke nomor indeks petak
   const playersByTile: Record<number, PlayerClient[]> = {};
   if (snapshot) {
     snapshot.players.forEach((p) => {
@@ -29,7 +31,7 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
   const activePlayer = snapshot?.players.find((p) => p.id === snapshot.activePlayerId);
 
   return (
-    <div className="w-full h-full max-w-[1400px] max-h-[920px] aspect-square p-2 bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+    <div className="h-[calc(100vh-4.5rem)] max-h-[920px] aspect-square p-2 sm:p-2.5 bg-slate-950 border-2 border-slate-800/90 rounded-2xl shadow-2xl overflow-hidden relative select-none">
       <div
         className="w-full h-full grid gap-1"
         style={{
@@ -37,7 +39,7 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
           gridTemplateRows: "repeat(15, minmax(0, 1fr))",
         }}
       >
-        {/* Render 56 Perimeter Tiles */}
+        {/* Render 56 Petak Perimeter Keliling */}
         {TILES.map((tile) => {
           const tileState = snapshot?.tilesState?.[tile.id];
           const owner = tileState?.ownerId
@@ -54,13 +56,14 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
               owner={owner}
               playersOnTile={playersOnTile}
               isActiveTile={isActiveTile}
+              onHover={setHoveredTile}
             />
           );
         })}
 
-        {/* Center Hub: 13x13 Inner Area */}
+        {/* Center Hub: Area Dalam 13x13 */}
         <div
-          className="relative z-10 overflow-hidden"
+          className="relative z-10 overflow-hidden rounded-2xl"
           style={{
             gridRowStart: 2,
             gridRowEnd: 15,
@@ -72,6 +75,7 @@ export const BoardGrid: React.FC<BoardGridProps> = ({
             snapshot={snapshot}
             networkConfig={networkConfig}
             onStartGame={onStartGame}
+            hoveredTile={hoveredTile}
           />
         </div>
       </div>

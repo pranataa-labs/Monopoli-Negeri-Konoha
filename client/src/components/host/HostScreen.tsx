@@ -43,15 +43,15 @@ export const HostScreen: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-between p-2 sm:p-4 select-none overflow-x-hidden">
+    <div className="h-screen w-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-between p-2 select-none overflow-hidden">
       {/* Top Bar */}
-      <header className="w-full max-w-[1400px] flex items-center justify-between py-2 px-4 bg-slate-900/80 backdrop-blur-md rounded-xl border border-slate-800 mb-2">
+      <header className="w-full max-w-[1400px] flex items-center justify-between py-1.5 px-4 bg-slate-900/90 backdrop-blur-md rounded-xl border border-slate-800 shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-black text-sm tracking-wide text-white uppercase">
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="font-black text-xs sm:text-sm tracking-wide text-white uppercase font-display">
             HOST SCREEN • MONITOR UTAMA
           </span>
-          <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+          <span className="text-[11px] text-slate-400 font-mono hidden md:inline">
             Tampilkan di TV / Monitor Ruang Tamu
           </span>
         </div>

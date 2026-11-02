@@ -31,7 +31,7 @@ export const ControllerScreen: React.FC = () => {
 
   if (!localPlayer) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen w-full bg-slate-950 flex flex-col items-center justify-center p-3 sm:p-4 select-none box-border">
         <JoinRoom
           snapshot={snapshot}
           onJoin={joinRoom}
