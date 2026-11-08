@@ -37,10 +37,16 @@ app.get("/api/health", (req, res) => {
 
 // Sajikan static client jika folder ../client/dist tersedia
 const clientDistPath = path.resolve(__dirname, "../../client/dist");
-app.use(express.static(clientDistPath));
+app.use(express.static(clientDistPath, {
+  etag: false,
+  maxAge: 0,
+}));
 
 app.get("*", (req, res, next) => {
   if (req.path.startsWith("/api/")) return next();
+  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   res.sendFile(path.join(clientDistPath, "index.html"), (err) => {
     if (err) {
       res.status(200).send("Monopoli Negeri Konoha Server Running. Vite client dev server runs on port 5173.");
