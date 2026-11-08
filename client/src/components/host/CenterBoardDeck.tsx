@@ -1,6 +1,6 @@
 import React from "react";
 import { TileData, TileState, PlayerClient, EventCardData } from "../../types/game";
-import { Crown, Sparkles } from "lucide-react";
+import { Sparkles, Shield } from "lucide-react";
 import { formatShortRupiah } from "./formatters";
 
 interface CenterBoardDeckProps {
@@ -22,169 +22,168 @@ export const CenterBoardDeck: React.FC<CenterBoardDeckProps> = ({
     : null;
 
   return (
-    <div className="h-full w-full leather-embossed rounded-xl relative overflow-hidden select-none flex flex-col justify-between p-4 sm:p-6 beveled-tray">
-      {/* Background Decorative Ambient Radial Glow */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#D4AF37]/6 blur-3xl pointer-events-none rounded-full" />
-      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#F5D76E]/6 blur-3xl pointer-events-none rounded-full" />
-
-      {/* ========================================================= */}
-      {/* 1. CENTRAL DIAGONAL 3D MONOPOLY PLAQUE (Matching Reference) */}
-      {/* ========================================================= */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <div className="transform -rotate-[35deg] flex flex-col items-center plaque-gold-shadow">
-          {/* Refined Gold Crown */}
-          <div className="flex items-center justify-center mb-1 drop-shadow-[0_2px_8px_rgba(212,175,55,0.6)]">
-            <Crown size={26} className="text-[#F5D76E] fill-[#D4AF37]/30" />
-          </div>
-
-          {/* Double Gold-Bordered Black Plaque */}
-          <div className="px-6 py-2.5 bg-[#0B0B0D] border-2 border-[#D4AF37] ring-1 ring-[#F5D76E]/50 shadow-2xl rounded-md flex flex-col items-center">
-            <span className="text-2xl sm:text-3xl font-primary tracking-widest text-[#F2F2F2] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
-              MONOPOLY
+    <div className="h-full w-full relative overflow-hidden select-none flex flex-col justify-between p-4 sm:p-6 neo-center-board">
+      {/* 1. Center Comic Brand Plaque */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <div className="transform -rotate-[14deg] flex flex-col items-center">
+          <div className="px-8 py-4 bg-white border-[3px] border-[#1E293B] rounded-[10px] shadow-[6px_6px_0px_#1E293B] flex flex-col items-center">
+            <div className="flex items-center gap-2 text-[#FF6B6B] text-[10px] sm:text-[11px] font-primary font-black tracking-[0.25em] uppercase">
+              <span>★</span>
+              <span>EDISI RESMI</span>
+              <span>★</span>
+            </div>
+            <span className="text-2xl sm:text-4xl font-primary font-extrabold tracking-tight text-[#0F172A] leading-tight">
+              MONOPOLI
             </span>
-            <div className="mt-0.5 px-3 py-0.5 bg-gradient-to-r from-[#D4AF37] via-[#F5D76E] to-[#D4AF37] rounded text-[#0B0B0D] font-property font-bold text-[8.5px] uppercase tracking-widest shadow-sm">
-              INDONESIA
+            <div className="mt-1 px-3 py-0.5 bg-[#FF6B6B] rounded-[6px] border-2 border-[#1E293B] text-white font-primary font-black text-[10px] sm:text-[12px] uppercase tracking-wider shadow-[2px_2px_0px_#1E293B]">
+              NEGERI KONOHA
             </div>
+            <span className="font-number text-[9px] text-[#475569] font-bold uppercase tracking-widest mt-1.5">
+              VIBRANT NEO-BRUTALIST POP
+            </span>
           </div>
         </div>
       </div>
 
-      {/* ========================================================= */}
-      {/* 2. RECESSED CARD SLOTS IN THE LEATHER (Top-Left & Bottom-Right) */}
-      {/* ========================================================= */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-between">
-        {/* UPPER-LEFT: KARTU TANDA TANYA (?) */}
+      {/* 2. Decks (Top-Left & Bottom-Right) */}
+      <div className="relative z-20 w-full h-full flex flex-col justify-between pointer-events-auto">
+        {/* UPPER-LEFT: KARTU DANA UMUM / KEBIJAKAN (#8B5CF6 Electric Purple & #EDE9FE Tint) */}
         <div className="flex justify-start">
-          <div className="w-36 sm:w-42 h-22 sm:h-26 rounded-xl bg-[#0B0B0D]/95 border border-[#D4AF37]/50 shadow-[inset_0_4px_12px_rgba(0,0,0,0.95),0_4px_15px_rgba(0,0,0,0.6)] p-2.5 flex flex-col justify-between relative group hover:border-[#F5D76E] transition-all cursor-pointer">
-            {/* Stacked Cards Underlay Visual Effect */}
-            <div className="absolute -top-1 -right-1 w-full h-full rounded-xl border border-[#D4AF37]/20 pointer-events-none" />
-
-            <div className="flex items-center justify-between border-b border-[#D4AF37]/25 pb-1">
-              <span className="font-property text-[8px] font-bold uppercase text-[#F5D76E] tracking-wider">
-                TANDA TANYA
+          <div className="w-40 sm:w-48 h-26 sm:h-30 rounded-[8px] bg-[#EDE9FE] border-[2.5px] border-[#1E293B] shadow-[4px_4px_0px_#1E293B] p-2.5 flex flex-col justify-between cursor-pointer hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#1E293B] transition-all">
+            <div className="flex items-center justify-between border-b-[2px] border-[#1E293B] pb-1">
+              <span className="font-primary text-[9px] sm:text-[10px] font-black uppercase text-[#8B5CF6] tracking-wider flex items-center gap-1">
+                <Shield size={12} className="text-[#8B5CF6]" /> DANA UMUM
               </span>
-              <span className="font-primary text-[10px] text-[#F5D76E]">?</span>
+              <span className="w-5 h-5 rounded-[4px] bg-[#8B5CF6] border-[1.5px] border-[#1E293B] flex items-center justify-center font-primary text-[10px] font-black text-white shadow-[1px_1px_0px_#1E293B]">
+                §
+              </span>
             </div>
 
-            <div className="flex flex-col items-center justify-center my-auto text-center py-1">
-              {/* Recessed Card Insert Slot Line */}
-              <div className="w-20 sm:w-24 h-1.5 bg-[#0B0B0D] rounded-full shadow-inner border border-[#D4AF37]/30 mb-1" />
-              <div className="flex items-center gap-1.5 text-[#F5D76E]">
-                <span className="font-primary text-base text-[#F5D76E] drop-shadow-[0_1px_4px_rgba(212,175,55,0.5)]">?</span>
-                <span className="font-property text-[8px] font-bold uppercase tracking-wider text-[#D4AF37]">
-                  CHANCE
-                </span>
-              </div>
+            <div className="flex flex-col items-center justify-center my-auto text-center">
+              <span className="font-primary text-xl font-black text-[#8B5CF6]">
+                KEBIJAKAN
+              </span>
+              <span className="font-property text-[8.5px] font-bold text-[#475569] uppercase tracking-wider">
+                DEWAN PUSAT
+              </span>
             </div>
 
             <div className="w-full flex justify-center">
-              <div className="w-8 h-0.5 bg-[#D4AF37]/25 rounded-full" />
+              <span className="text-[7.5px] font-number font-black text-[#0F172A] bg-white px-2 py-0.5 rounded-[4px] border-[1.5px] border-[#1E293B] shadow-[1.5px_1.5px_0px_#1E293B]">
+                AMBIL KARTU
+              </span>
             </div>
           </div>
         </div>
 
-        {/* LOWER-RIGHT: KARTU LUCKY SPIN */}
+        {/* LOWER-RIGHT: KARTU KESEMPATAN / EVENT (#F59E0B Amber Gold & #FEF3C7 Tint) */}
         <div className="flex justify-end">
-          <div className="w-36 sm:w-42 h-22 sm:h-26 rounded-xl bg-[#0B0B0D]/95 border border-[#D4AF37]/50 shadow-[inset_0_4px_12px_rgba(0,0,0,0.95),0_4px_15px_rgba(0,0,0,0.6)] p-2.5 flex flex-col justify-between relative group hover:border-[#F5D76E] transition-all cursor-pointer">
-            {/* Stacked Cards Underlay Visual Effect */}
-            <div className="absolute -bottom-1 -left-1 w-full h-full rounded-xl border border-[#D4AF37]/20 pointer-events-none" />
-
-            <div className="flex items-center justify-between border-b border-[#D4AF37]/25 pb-1">
-              <span className="font-property text-[8px] font-bold uppercase text-[#F5D76E] tracking-wider flex items-center gap-1">
-                <Sparkles size={11} className="text-[#F5D76E]" /> LUCKY SPIN
+          <div className="w-40 sm:w-48 h-26 sm:h-30 rounded-[8px] bg-[#FEF3C7] border-[2.5px] border-[#1E293B] shadow-[4px_4px_0px_#1E293B] p-2.5 flex flex-col justify-between cursor-pointer hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#1E293B] transition-all">
+            <div className="flex items-center justify-between border-b-[2px] border-[#1E293B] pb-1">
+              <span className="font-primary text-[9px] sm:text-[10px] font-black uppercase text-[#D97706] tracking-wider flex items-center gap-1">
+                <Sparkles size={12} className="text-[#D97706]" /> KESEMPATAN
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F5D76E]/80" />
+              <span className="w-5 h-5 rounded-[4px] bg-[#F59E0B] border-[1.5px] border-[#1E293B] flex items-center justify-center font-primary text-[10px] font-black text-white shadow-[1px_1px_0px_#1E293B]">
+                ?
+              </span>
             </div>
 
-            <div className="flex flex-col items-center justify-center my-auto text-center py-1">
-              {/* Recessed Card Insert Slot Line */}
-              <div className="w-20 sm:w-24 h-1.5 bg-[#0B0B0D] rounded-full shadow-inner border border-[#D4AF37]/30 mb-1" />
-              <div className="flex items-center gap-1 text-[#F5D76E]">
-                <Crown size={12} className="text-[#F5D76E]" />
-                <span className="font-property text-[8px] font-bold uppercase tracking-wider text-[#D4AF37]">
-                  DANA TAKTIS
-                </span>
-              </div>
+            <div className="flex flex-col items-center justify-center my-auto text-center">
+              <span className="font-primary text-xl font-black text-[#D97706]">
+                EVENT SPESIAL
+              </span>
+              <span className="font-property text-[8.5px] font-bold text-[#475569] uppercase tracking-wider">
+                LUCKY SPIN & KASUS
+              </span>
             </div>
 
             <div className="w-full flex justify-center">
-              <div className="w-8 h-0.5 bg-[#D4AF37]/25 rounded-full" />
+              <span className="text-[7.5px] font-number font-black text-[#0F172A] bg-white px-2 py-0.5 rounded-[4px] border-[1.5px] border-[#1E293B] shadow-[1.5px_1.5px_0px_#1E293B]">
+                PUTAR RODA
+              </span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ========================================================= */}
-      {/* 3. ACTIVE DRAWN EVENT CARD OVERLAY */}
-      {/* ========================================================= */}
+      {/* 3. Active Drawn Event Card Overlay */}
       {activeCard && (
-        <div className="absolute inset-0 bg-black/85 backdrop-blur-sm z-30 flex items-center justify-center p-4 animate-scale-up">
-          <div className="w-full max-w-sm bg-[#0B0B0D] border-2 border-[#D4AF37] rounded-2xl shadow-2xl p-5 text-center space-y-3 ring-2 ring-[#F5D76E]/40">
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#F5D76E] border border-[#D4AF37]/40 font-property text-[9px] uppercase font-bold">
-              {activeCard.deck === "GOVERNMENT" ? "KARTU TANDA TANYA (?)" : "KARTU LUCKY SPIN"}
+        <div className="absolute inset-0 bg-[#0F172A]/50 backdrop-blur-xs z-30 flex items-center justify-center p-4">
+          <div className="w-full max-w-sm bg-white rounded-[12px] border-[2.5px] border-[#1E293B] shadow-[6px_6px_0px_#1E293B] p-5 text-center space-y-3">
+            <div
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] border-[2px] border-[#1E293B] font-primary text-[10px] uppercase font-black shadow-[2px_2px_0px_#1E293B] ${
+                activeCard.deck === "GOVERNMENT"
+                  ? "bg-[#EDE9FE] text-[#8B5CF6]"
+                  : "bg-[#FEF3C7] text-[#D97706]"
+              }`}
+            >
+              {activeCard.deck === "GOVERNMENT" ? "KARTU DANA UMUM" : "KARTU KESEMPATAN"}
             </div>
-            <h3 className="text-base font-primary text-[#F2F2F2] uppercase leading-tight">
+            <h3 className="text-lg font-primary font-black text-[#0F172A] uppercase leading-tight">
               {activeCard.title}
             </h3>
-            <p className="font-sans text-xs text-slate-300 leading-relaxed px-2">
+            <p className="font-property text-xs text-[#475569] leading-relaxed px-2 font-medium">
               {activeCard.text}
             </p>
             {activeCard.amount > 0 && (
-              <div className="py-1 px-3 bg-[#1C1C1F] rounded-lg border border-[#D4AF37]/40 font-number text-xs text-[#F5D76E] font-extrabold inline-block">
-                Nominal: {formatShortRupiah(activeCard.amount)}
+              <div className="py-1 px-3 bg-[#D1FAE5] rounded-[6px] border-[2px] border-[#1E293B] font-number text-xs text-[#10B981] font-black inline-block shadow-[2px_2px_0px_#1E293B]">
+                Nominal: +{formatShortRupiah(activeCard.amount)}
+              </div>
+            )}
+            {activeCard.amount < 0 && (
+              <div className="py-1 px-3 bg-[#FEE2E2] rounded-[6px] border-[2px] border-[#1E293B] font-number text-xs text-[#F43F5E] font-black inline-block shadow-[2px_2px_0px_#1E293B]">
+                Denda: {formatShortRupiah(activeCard.amount)}
               </div>
             )}
           </div>
         </div>
       )}
 
-      {/* ========================================================= */}
-      {/* 4. HOVER TITLE DEED PREVIEW (Smooth floating preview) */}
-      {/* ========================================================= */}
+      {/* 4. Hover Title Deed Preview */}
       {hoveredTile && hoveredTile.price > 0 && !activeCard && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center p-4 pointer-events-none animate-scale-up">
-          <div className="w-full max-w-xs bg-[#0B0B0D] border-2 border-[#D4AF37] rounded-xl shadow-2xl overflow-hidden ring-2 ring-[#F5D76E]/40">
+        <div className="absolute inset-0 z-20 flex items-center justify-center p-4 pointer-events-none">
+          <div className="w-full max-w-xs bg-white rounded-[8px] border-[2.5px] border-[#1E293B] shadow-[6px_6px_0px_#1E293B] overflow-hidden">
             <div
-              className="py-2 px-3 text-center font-primary text-xs uppercase tracking-wider text-white shadow-md flex items-center justify-between"
+              className="py-2.5 px-3 text-center font-primary text-xs uppercase tracking-wider text-[#0F172A] font-black flex items-center justify-between border-b-[2.5px] border-[#1E293B]"
               style={{ backgroundColor: hoveredTile.colorGroup }}
             >
-              <span>SERTIFIKAT HAK MILIK</span>
-              <span className="font-number text-[8px] bg-black/60 px-1.5 py-0.5 rounded font-extrabold">
-                PETAK #{hoveredTile.index}
+              <span>SERTIFIKAT WILAYAH</span>
+              <span className="font-number text-[9px] bg-white text-[#0F172A] px-2 py-0.5 rounded-[4px] border-[1.5px] border-[#1E293B] font-black shadow-[1.5px_1.5px_0px_#1E293B]">
+                #{hoveredTile.index}
               </span>
             </div>
 
-            <div className="p-3 space-y-2">
+            <div className="p-3.5 space-y-2.5 bg-white">
               <div className="text-center">
-                <h4 className="font-property text-sm font-bold text-[#F2F2F2] uppercase">{hoveredTile.name}</h4>
-                <p className="text-[10px] text-slate-400 mt-0.5 font-sans">{hoveredTile.desc}</p>
+                <h4 className="font-primary text-sm font-black text-[#0F172A] uppercase">{hoveredTile.name}</h4>
+                <p className="text-[10.5px] text-[#475569] mt-0.5 font-property font-medium">{hoveredTile.desc}</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-1.5 text-xs bg-[#1C1C1F] p-2 rounded-lg border border-slate-800 font-number">
+              <div className="grid grid-cols-2 gap-2 text-xs bg-[#F8FAFC] p-2.5 rounded-[6px] border-[2px] border-[#1E293B] font-number">
                 <div>
-                  <span className="text-slate-400 block text-[8px] font-sans">Harga Beli:</span>
-                  <strong className="text-[#F5D76E] text-xs font-extrabold">
+                  <span className="text-[#475569] block text-[8px] font-property font-bold">Harga Beli:</span>
+                  <strong className="text-[#0F172A] text-xs font-black">
                     {formatShortRupiah(hoveredTile.price)}
                   </strong>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[8px] font-sans">Sewa Dasar:</span>
-                  <strong className="text-emerald-400 text-xs font-extrabold">
+                  <span className="text-[#475569] block text-[8px] font-property font-bold">Sewa Dasar:</span>
+                  <strong className="text-[#10B981] text-xs font-black">
                     {formatShortRupiah(hoveredTile.rent)}
                   </strong>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[8px] font-sans">Biaya Ruko:</span>
-                  <span className="text-slate-300 text-xs font-extrabold">
+                  <span className="text-[#475569] block text-[8px] font-property font-bold">Biaya Tingkat:</span>
+                  <span className="text-[#0F172A] text-xs font-black">
                     {formatShortRupiah(hoveredTile.upgradeCost || 0)}
                   </span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[8px] font-sans">Status:</span>
+                  <span className="text-[#475569] block text-[8px] font-property font-bold">Pemilik:</span>
                   {hoveredOwner ? (
-                    <span className="text-sky-400 font-bold text-xs">{hoveredOwner.name}</span>
+                    <span className="text-[#FF6B6B] font-black text-xs">{hoveredOwner.name}</span>
                   ) : (
-                    <span className="text-emerald-400 font-bold text-xs">Tersedia</span>
+                    <span className="text-[#10B981] font-black text-xs">Tersedia</span>
                   )}
                 </div>
               </div>

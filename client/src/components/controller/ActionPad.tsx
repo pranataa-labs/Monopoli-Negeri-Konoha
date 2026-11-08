@@ -1,7 +1,7 @@
 import React from "react";
 import { PlayerClient, GameSnapshot } from "../../types/game";
 import { TILES } from "../../constants/board";
-import { formatShortRupiah } from "../host/TileCell";
+import { formatShortRupiah } from "../host/formatters";
 import { Dices, ShoppingBag, ShieldCheck, Key, ArrowRight } from "lucide-react";
 
 interface ActionPadProps {
@@ -48,19 +48,19 @@ export const ActionPad: React.FC<ActionPadProps> = ({
   if (!isTurn) {
     const activePlayer = snapshot?.players.find((p) => p.id === snapshot.activePlayerId);
     return (
-      <div className="p-4 bg-slate-900/90 border border-slate-800 rounded-2xl text-center shadow-lg">
-        <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
-          Menunggu Giliran
+      <div className="p-3.5 rounded-[8px] text-center font-property bg-white border-[2.5px] border-[#1E293B] shadow-[3px_3px_0px_#1E293B]">
+        <p className="text-[10px] font-primary font-black uppercase tracking-wider text-[#FF6B6B] mb-1">
+          MENUNGGU GILIRAN
         </p>
-        <p className="text-sm font-semibold text-white">
-          Sedang giliran <span className="text-amber-400">{activePlayer?.name || "Lawan"}</span>
+        <p className="text-xs font-bold text-[#0F172A]">
+          Sedang giliran <span className="text-[#0F172A] bg-[#FEF08A] px-2 py-0.5 rounded-[4px] border-[1.5px] border-[#1E293B] font-black">{activePlayer?.name || "Lawan"}</span>
         </p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-2.5">
+    <div className="space-y-2.5 font-property">
       {/* Jail Options */}
       {player.inJail && (
         <div className="grid grid-cols-2 gap-2">
@@ -70,10 +70,10 @@ export const ActionPad: React.FC<ActionPadProps> = ({
               onPayBail();
             }}
             disabled={player.cash < 500000}
-            className={`py-3 px-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-md ${
+            className={`py-3 px-2 rounded-[8px] text-xs font-primary font-black uppercase flex items-center justify-center gap-1.5 transition-all border-[2px] border-[#1E293B] ${
               player.cash >= 500000
-                ? "bg-amber-500 hover:bg-amber-400 text-slate-950 active:scale-95"
-                : "bg-slate-800 text-slate-500 cursor-not-allowed"
+                ? "bg-[#FEF9C3] hover:bg-[#FEF08A] text-[#0F172A] shadow-[3px_3px_0px_#1E293B] cursor-pointer active:translate-x-[1px] active:translate-y-[1px]"
+                : "bg-[#F1F5F9] text-[#94A3B8] cursor-not-allowed shadow-none"
             }`}
           >
             <ShieldCheck size={16} /> Bayar Jaminan (500rb)
@@ -85,42 +85,42 @@ export const ActionPad: React.FC<ActionPadProps> = ({
               onUsePass();
             }}
             disabled={!player.hasInsiderPass}
-            className={`py-3 px-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-md ${
+            className={`py-3 px-2 rounded-[8px] text-xs font-primary font-black uppercase flex items-center justify-center gap-1.5 transition-all border-[2px] border-[#1E293B] ${
               player.hasInsiderPass
-                ? "bg-sky-500 hover:bg-sky-400 text-white active:scale-95"
-                : "bg-slate-800 text-slate-500 cursor-not-allowed"
+                ? "bg-[#EDE9FE] hover:bg-[#DDD6FE] text-[#8B5CF6] shadow-[3px_3px_0px_#1E293B] cursor-pointer active:translate-x-[1px] active:translate-y-[1px]"
+                : "bg-[#F1F5F9] text-[#94A3B8] cursor-not-allowed shadow-none"
             }`}
           >
-            <Key size={16} /> Pakai Kartu Sakti
+            <Key size={16} className="text-[#8B5CF6]" /> Pakai Kartu Sakti
           </button>
         </div>
       )}
 
-      {/* Buy Tile Button */}
+      {/* Buy Tile Button (#FF6B6B Vibrant Coral dengan teks #FFFFFF) */}
       {canBuy && currentTile && (
         <button
           onClick={() => {
             vibrate(60);
             onBuy();
           }}
-          className="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-black text-sm uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 active:scale-98 transition-transform cursor-pointer"
+          className="w-full py-3.5 px-4 bg-[#FF6B6B] hover:bg-[#FA5252] text-white border-[2.5px] border-[#1E293B] shadow-[4px_4px_0px_#1E293B] font-primary font-black text-xs uppercase tracking-wider rounded-[8px] flex items-center justify-center gap-2 cursor-pointer active:translate-x-[2px] active:translate-y-[2px] transition-all"
         >
-          <ShoppingBag size={18} />
+          <ShoppingBag size={17} />
           <span>Beli {currentTile.name} ({formatShortRupiah(currentTile.price)})</span>
         </button>
       )}
 
-      {/* Main Roll Dice Button */}
+      {/* Main Roll Dice Button (#FF6B6B Vibrant Coral dengan teks #FFFFFF) */}
       {canRoll && (
         <button
           onClick={() => {
             vibrate(50);
             onRoll();
           }}
-          className="w-full py-4 px-4 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-base uppercase tracking-wider rounded-xl shadow-xl flex items-center justify-center gap-2.5 active:scale-98 transition-transform cursor-pointer animate-pulse-gentle"
+          className="w-full py-4 px-4 bg-[#FF6B6B] hover:bg-[#FA5252] text-white border-[2.5px] border-[#1E293B] shadow-[4px_4px_0px_#1E293B] font-primary font-black text-sm uppercase tracking-wider rounded-[8px] flex items-center justify-center gap-2.5 cursor-pointer active:translate-x-[2px] active:translate-y-[2px] transition-all"
         >
-          <Dices size={22} />
-          <span>Lempar Dadu Konoha</span>
+          <Dices size={20} />
+          <span>Kocok Dadu Permainan</span>
         </button>
       )}
 
@@ -131,10 +131,10 @@ export const ActionPad: React.FC<ActionPadProps> = ({
             vibrate(30);
             onEndTurn();
           }}
-          className="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-slate-700 shadow-md flex items-center justify-center gap-2 active:scale-98 transition-all cursor-pointer"
+          className="w-full py-3 px-4 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border-[2.5px] border-[#1E293B] shadow-[3px_3px_0px_#1E293B] font-primary font-black text-xs uppercase tracking-wider rounded-[8px] flex items-center justify-center gap-2 cursor-pointer active:translate-x-[2px] active:translate-y-[2px] transition-all"
         >
           <span>Selesaikan Giliran</span>
-          <ArrowRight size={16} />
+          <ArrowRight size={15} />
         </button>
       )}
     </div>

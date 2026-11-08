@@ -23,7 +23,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full relative min-h-screen bg-[#0B0B0D] font-sans text-[#F2F2F2] overflow-x-hidden">
+    <div className="w-full relative min-h-screen fantasy-bg font-property text-[#0F2634] overflow-x-hidden">
       {mode === "HOST" ? <HostScreen /> : <ControllerScreen />}
     </div>
   );

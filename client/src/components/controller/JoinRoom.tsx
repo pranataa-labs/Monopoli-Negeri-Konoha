@@ -36,64 +36,61 @@ export const JoinRoom: React.FC<JoinRoomProps> = ({ snapshot, onJoin, error }) =
   const renderTokenIcon = (iconName: string) => {
     switch (iconName) {
       case "Car":
-        return <Car size={18} />;
+        return <Car size={16} />;
       case "Accessibility":
-        return <Accessibility size={18} />;
+        return <Accessibility size={16} />;
       case "Truck":
-        return <Truck size={18} />;
+        return <Truck size={16} />;
       case "Bike":
-        return <Bike size={18} />;
+        return <Bike size={16} />;
       case "Briefcase":
-        return <Briefcase size={18} />;
+        return <Briefcase size={16} />;
       case "ShieldAlert":
-        return <ShieldAlert size={18} />;
+        return <ShieldAlert size={16} />;
       default:
-        return <User size={18} />;
+        return <User size={16} />;
     }
   };
 
   return (
-    <div className="w-full max-w-[360px] mx-auto p-3.5 sm:p-4 bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden select-none box-border">
-      {/* Decorative Gold Header Aura */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-20 bg-amber-500/15 blur-2xl pointer-events-none rounded-full" />
-
-      <div className="text-center mb-3.5 relative z-10">
-        <span className="text-[9px] font-mono font-black tracking-widest uppercase bg-amber-500/15 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-500/30 inline-flex items-center gap-1 shadow-sm">
-          <Sparkles size={10} className="text-amber-400" /> KONTROLER PONSEL • KONOHA
+    <div className="w-full max-w-[380px] mx-auto p-5 rounded-[12px] border-[2.5px] border-[#1E293B] shadow-[6px_6px_0px_#1E293B] bg-white relative overflow-hidden select-none box-border font-property">
+      <div className="text-center mb-4">
+        <span className="font-primary text-[10px] font-black tracking-wider uppercase bg-[#E0F2FE] text-[#0F172A] px-3 py-1 rounded-[6px] border-[1.5px] border-[#1E293B] inline-flex items-center gap-1.5 shadow-[2px_2px_0px_#1E293B]">
+          <Sparkles size={11} className="text-[#FF6B6B]" /> KONTROLER PEMAIN
         </span>
-        <h2 className="text-lg sm:text-xl font-black text-white mt-1 tracking-tight uppercase font-display">
-          Masuk Sidang Paripurna
+        <h2 className="text-xl font-primary font-black text-[#0F172A] mt-2 tracking-tight uppercase leading-tight">
+          Masuk Permainan
         </h2>
-        <p className="text-[11px] text-slate-400 mt-0.5">
-          Pilih nama konglomerat dan pion satir favorit Anda.
+        <p className="text-[11px] text-[#475569] mt-0.5 font-semibold">
+          Pilih nama alias dan pion favorit Anda.
         </p>
       </div>
 
       {error && (
-        <div className="mb-3 p-2.5 bg-red-950/90 border border-red-500/60 rounded-xl text-xs text-red-200 shadow-md">
+        <div className="mb-3.5 p-2.5 bg-[#FEE2E2] border-[2px] border-[#1E293B] rounded-[8px] text-xs text-[#F43F5E] font-bold shadow-[2px_2px_0px_#1E293B]">
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-3 relative z-10">
+      <form onSubmit={handleSubmit} className="space-y-3.5">
         <div>
-          <label className="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">
-            Nama Konglomerat / Alias
+          <label className="block text-[11px] font-primary font-black text-[#0F172A] uppercase tracking-wider mb-1">
+            Nama Pemain / Alias
           </label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Contoh: Haji Juragan CPO"
+            placeholder="Contoh: Juragan Konoha"
             maxLength={20}
-            className="w-full px-3 py-2 bg-slate-950 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 font-medium text-xs transition-all"
+            className="w-full px-3 py-2.5 bg-white border-[2px] border-[#1E293B] rounded-[8px] text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#FF6B6B] font-bold text-xs transition-all shadow-[2px_2px_0px_#1E293B]"
             required
           />
         </div>
 
         <div>
-          <label className="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-            Pilih Pion Sindiran
+          <label className="block text-[11px] font-primary font-black text-[#0F172A] uppercase tracking-wider mb-1.5">
+            Pilih Pion Karakter
           </label>
           <div className="grid grid-cols-2 gap-2 w-full">
             {SATIRICAL_TOKENS.map((token) => {
@@ -106,43 +103,43 @@ export const JoinRoom: React.FC<JoinRoomProps> = ({ snapshot, onJoin, error }) =
                   key={token.id}
                   disabled={isTaken}
                   onClick={() => handleSelectToken(token)}
-                  className={`p-2 rounded-xl border text-left flex flex-col justify-between transition-all relative cursor-pointer min-w-0 overflow-hidden ${
+                  className={`p-2.5 rounded-[8px] text-left flex flex-col justify-between transition-all relative cursor-pointer min-w-0 overflow-hidden ${
                     isTaken
-                      ? "opacity-30 border-slate-800 bg-slate-950 cursor-not-allowed"
+                      ? "opacity-40 border-[2px] border-[#94A3B8] bg-[#F1F5F9] cursor-not-allowed shadow-none"
                       : isSelected
-                      ? "border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/80 shadow-md shadow-amber-500/20 scale-[1.01]"
-                      : "border-slate-800 bg-slate-950/80 hover:border-slate-700 hover:bg-slate-900"
+                      ? "border-[2.5px] border-[#1E293B] bg-[#FEF08A] shadow-[3px_3px_0px_#1E293B] translate-x-[-1px] translate-y-[-1px]"
+                      : "border-[2px] border-[#1E293B] bg-white shadow-[2px_2px_0px_#1E293B] hover:bg-[#F8FAFC]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5 w-full">
                     <div
-                      className="w-7 h-7 rounded-lg flex items-center justify-center text-white shadow-xs shrink-0"
+                      className="w-7 h-7 rounded-[6px] flex items-center justify-center text-white shadow-[1px_1px_0px_#1E293B] shrink-0 border-[1.5px] border-[#1E293B]"
                       style={{ backgroundColor: token.color }}
                     >
                       {renderTokenIcon(token.icon)}
                     </div>
 
                     <div className="flex items-center gap-1 shrink-0">
-                      <span className="text-[7.5px] font-black uppercase px-1 py-0.2 rounded bg-slate-800 text-slate-300">
+                      <span className="text-[8px] font-primary font-black uppercase px-1.5 py-0.2 rounded-[4px] bg-white text-[#0F172A] border-[1px] border-[#1E293B]">
                         {token.badge}
                       </span>
                       {isSelected && (
-                        <CheckCircle2 size={12} className="text-amber-400 shrink-0" />
+                        <CheckCircle2 size={13} className="text-[#0F172A] shrink-0 fill-[#10B981]" />
                       )}
                     </div>
                   </div>
 
                   <div className="min-w-0 w-full">
-                    <span className="text-[11px] font-black text-white block leading-tight truncate">
+                    <span className="text-[11px] font-primary font-black text-[#0F172A] block leading-tight truncate uppercase">
                       {token.name}
                     </span>
-                    <span className="text-[9px] text-slate-400 block truncate mt-0.5 leading-none">
+                    <span className="text-[9px] text-[#475569] font-property block truncate mt-0.5 leading-none font-bold">
                       {token.slogan}
                     </span>
                   </div>
 
                   {isTaken && (
-                    <span className="absolute inset-0 bg-black/75 rounded-xl flex items-center justify-center text-[9px] font-black text-red-400 uppercase tracking-wider">
+                    <span className="absolute inset-0 bg-black/75 rounded-[8px] flex items-center justify-center text-[9px] font-black text-[#F43F5E] uppercase tracking-wider">
                       Sudah Dipilih
                     </span>
                   )}
@@ -154,9 +151,9 @@ export const JoinRoom: React.FC<JoinRoomProps> = ({ snapshot, onJoin, error }) =
 
         <button
           type="submit"
-          className="w-full py-3 bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-amber-500/20 transition-all active:scale-[0.98] cursor-pointer mt-2"
+          className="w-full py-3.5 rounded-[8px] bg-[#FF6B6B] hover:bg-[#FA5252] text-white border-[2.5px] border-[#1E293B] shadow-[4px_4px_0px_#1E293B] font-primary font-black text-xs uppercase tracking-wider cursor-pointer mt-2 active:translate-x-[2px] active:translate-y-[2px] transition-all"
         >
-          Masuk Meja Sidang
+          Masuk Meja Permainan
         </button>
       </form>
     </div>
